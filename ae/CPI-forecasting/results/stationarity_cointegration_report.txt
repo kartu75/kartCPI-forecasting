@@ -1,0 +1,157 @@
+=== AUGMENTED DICKEY-FULLER (ADF) TEST ===
+Null Hypothesis: The series has a unit root (is non-stationary)
+
+Food_and_Beverages:
+  ADF Statistic: 0.4822
+  p-value: 0.9843
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0000) -> I(1)
+
+Fuel_and_Light:
+  ADF Statistic: -0.8162
+  p-value: 0.8143
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0000) -> I(1)
+
+Headline_CPI:
+  ADF Statistic: 1.0207
+  p-value: 0.9945
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0000) -> I(1)
+
+Housing:
+  ADF Statistic: -1.6310
+  p-value: 0.4670
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Non-Stationary (p-value: 0.2794) -> I(>1)
+
+Miscellaneous:
+  ADF Statistic: 3.5912
+  p-value: 1.0000
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0000) -> I(1)
+
+USD_INR:
+  ADF Statistic: -1.0496
+  p-value: 0.7347
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0089) -> I(1)
+
+Log_USD_INR:
+  ADF Statistic: -1.2020
+  p-value: 0.6728
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0042) -> I(1)
+
+Repo_Rate:
+  ADF Statistic: -2.0128
+  p-value: 0.2810
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0027) -> I(1)
+
+Reserve_Money:
+  ADF Statistic: -0.1390
+  p-value: 0.9454
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0000) -> I(1)
+
+Forex_Reserves:
+  ADF Statistic: 0.6259
+  p-value: 0.9882
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0000) -> I(1)
+
+Log_Trade_Balance:
+  ADF Statistic: -4.0692
+  p-value: 0.0011
+  Result: Stationary (Reject Null)
+
+Log_Reserve_Money:
+  ADF Statistic: -0.6561
+  p-value: 0.8578
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0000) -> I(1)
+
+Log_Forex_Reserves:
+  ADF Statistic: -0.4377
+  p-value: 0.9036
+  Result: Non-Stationary (Fail to Reject Null)
+  1st Diff Result: Stationary (p-value: 0.0000) -> I(1)
+
+
+=== JOHANSEN COINTEGRATION TEST ===
+Testing cointegration among Model 2 variables: Headline_CPI, Miscellaneous, Housing, Log_USD_INR
+
+Trace Statistics:
+r <= 0: Trace Stat = 44.3458, 5% Critical Value = 47.8545
+  -> Fail to reject null of r <= 0. No further cointegration.
+r <= 1: Trace Stat = 14.4256, 5% Critical Value = 29.7961
+  -> Fail to reject null of r <= 1. No further cointegration.
+r <= 2: Trace Stat = 3.4215, 5% Critical Value = 15.4943
+  -> Fail to reject null of r <= 2. No further cointegration.
+r <= 3: Trace Stat = 0.1548, 5% Critical Value = 3.8415
+  -> Fail to reject null of r <= 3. No further cointegration.
+
+
+=== GRANGER CAUSALITY TESTS ===
+H0: The candidate variable does NOT Granger-cause Headline_CPI
+Testing on first-differenced data | Max lags = 3 | Significance level = 5%
+
+  Food_and_Beverages -> Headline_CPI:
+    Lag 1: F-stat = 5.2133, p-value = 0.0241  [Significant (Granger-causes CPI)]
+    Lag 2: F-stat = 7.1441, p-value = 0.0012  [Significant (Granger-causes CPI)]
+    Lag 3: F-stat = 4.9164, p-value = 0.0029  [Significant (Granger-causes CPI)]
+
+  Fuel_and_Light -> Headline_CPI:
+    Lag 1: F-stat = 0.7707, p-value = 0.3817  [Not significant]
+    Lag 2: F-stat = 0.3000, p-value = 0.7414  [Not significant]
+    Lag 3: F-stat = 0.9339, p-value = 0.4266  [Not significant]
+
+  Log_USD_INR -> Headline_CPI:
+    Lag 1: F-stat = 1.7830, p-value = 0.1842  [Not significant]
+    Lag 2: F-stat = 0.9650, p-value = 0.3838  [Not significant]
+    Lag 3: F-stat = 0.5994, p-value = 0.6166  [Not significant]
+
+  Repo_Rate -> Headline_CPI:
+    Lag 1: F-stat = 1.1269, p-value = 0.2904  [Not significant]
+    Lag 2: F-stat = 0.3103, p-value = 0.7338  [Not significant]
+    Lag 3: F-stat = 0.5746, p-value = 0.6328  [Not significant]
+
+  Log_Reserve_Money -> Headline_CPI:
+    Lag 1: F-stat = 0.3118, p-value = 0.5775  [Not significant]
+    Lag 2: F-stat = 0.6092, p-value = 0.5454  [Not significant]
+    Lag 3: F-stat = 0.8396, p-value = 0.4747  [Not significant]
+
+  Log_Trade_Balance -> Headline_CPI:
+    Lag 1: F-stat = 0.0027, p-value = 0.9587  [Not significant]
+    Lag 2: F-stat = 0.0213, p-value = 0.9789  [Not significant]
+    Lag 3: F-stat = 0.2633, p-value = 0.8517  [Not significant]
+
+  Log_Forex_Reserves -> Headline_CPI:
+    Lag 1: F-stat = 2.8779, p-value = 0.0923  [Not significant]
+    Lag 2: F-stat = 2.0773, p-value = 0.1296  [Not significant]
+    Lag 3: F-stat = 1.8532, p-value = 0.1412  [Not significant]
+
+  Miscellaneous -> Headline_CPI:
+    Lag 1: F-stat = 0.8198, p-value = 0.3670  [Not significant]
+    Lag 2: F-stat = 4.4596, p-value = 0.0135  [Significant (Granger-causes CPI)]
+    Lag 3: F-stat = 3.4445, p-value = 0.0189  [Significant (Granger-causes CPI)]
+
+  Housing -> Headline_CPI:
+    Lag 1: F-stat = 12.0304, p-value = 0.0007  [Significant (Granger-causes CPI)]
+    Lag 2: F-stat = 9.2764, p-value = 0.0002  [Significant (Granger-causes CPI)]
+    Lag 3: F-stat = 5.9136, p-value = 0.0008  [Significant (Granger-causes CPI)]
+
+
+=== BREUSCH-GODFREY LM TEST (Serial Correlation in Residuals) ===
+H0: No serial correlation in ARDL model residuals | Lags tested: 1, 2, 3
+
+  Model 3: ARDL(1,1,1):
+    Lag 1: LM chi2-stat = 0.0358, p-value = 0.8500  [No serial correlation]
+    Lag 2: LM chi2-stat = 2.2167, p-value = 0.3301  [No serial correlation]
+    Lag 3: LM chi2-stat = 8.0649, p-value = 0.0447  [Serial correlation present]
+
+  Model 4: ARDL4(1,1,1ctrl):
+    Lag 1: LM chi2-stat = 0.0753, p-value = 0.7838  [No serial correlation]
+    Lag 2: LM chi2-stat = 1.1596, p-value = 0.5600  [No serial correlation]
+    Lag 3: LM chi2-stat = 6.5568, p-value = 0.0874  [No serial correlation]

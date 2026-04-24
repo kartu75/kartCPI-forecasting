@@ -1,0 +1,8 @@
+pandas
+numpy
+statsmodels
+arch
+matplotlib
+scikit-learn
+openpyxl
+xlrd
