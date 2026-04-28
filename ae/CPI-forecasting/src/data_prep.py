@@ -32,13 +32,15 @@ def load_and_prep_data(raw_dir):
     df_cpi.index = pd.to_datetime(df_cpi.index, format='%b-%Y')
     df_cpi = df_cpi.resample('MS').mean()
     
-    # 2. Process USD_INR
-    usd_file = os.path.join(raw_dir, "USD_INR Historical Data (1).csv")
-    df_usd = pd.read_csv(usd_file)
-    df_usd['Date'] = pd.to_datetime(df_usd['Date'], format='%d-%m-%Y')
-    df_usd.set_index('Date', inplace=True)
-    df_usd['USD_INR'] = pd.to_numeric(df_usd['Price'], errors='coerce')
-    df_usd = df_usd[['USD_INR']].resample('MS').mean()
+    # 2. Process USD_INR (source: DEXINUS.xlsx — FRED daily INR per USD)
+    usd_file = os.path.join(raw_dir, "DEXINUS.xlsx")
+    df_usd_raw = pd.read_excel(usd_file, sheet_name='Daily')
+    df_usd_raw['observation_date'] = pd.to_datetime(df_usd_raw['observation_date'])
+    df_usd_raw.set_index('observation_date', inplace=True)
+    df_usd_raw['DEXINUS'] = pd.to_numeric(df_usd_raw['DEXINUS'], errors='coerce')
+    df_usd_raw.dropna(subset=['DEXINUS'], inplace=True)   # drop holiday NaNs
+    df_usd = df_usd_raw[['DEXINUS']].resample('MS').mean()
+    df_usd.rename(columns={'DEXINUS': 'USD_INR'}, inplace=True)
     
     # Handle missing USD_INR data after March 2020 with a custom trajectory
     last_date = df_usd.index[-1]
